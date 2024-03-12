@@ -1,66 +1,47 @@
-import { Button, Frog, TextInput } from 'frog'
-// import { neynar } from 'frog/hubs'
+import { Button, Frog } from 'frog'
 import { handle } from 'frog/vercel'
-
-// Uncomment to use Edge Runtime.
-// export const config = {
-//   runtime: 'edge',
-// }
+import { abi } from './abi.js'
 
 export const app = new Frog({
   assetsPath: '/',
   basePath: '/api',
-  // Supply a Hub to enable frame verification.
-  // hub: neynar({ apiKey: 'NEYNAR_FROG_FM' })
 })
 
 app.frame('/', (c) => {
-  const { buttonValue, inputText, status } = c
-  const fruit = inputText || buttonValue
+  return c.res({
+    action: '/finish',
+    image: "/blobs.png",
+    intents: [
+      <Button.Transaction target="/mint">Mint an Onchain Blob</Button.Transaction>,
+      <Button.Link href="https://opensea.io/collection/onchain-blobs">Blobs Opensea</Button.Link>
+    ]
+  })
+})
+ 
+app.frame('/finish', (c) => {
+  const { } = c
   return c.res({
     image: (
-      <div
-        style={{
-          alignItems: 'center',
-          background:
-            status === 'response'
-              ? 'linear-gradient(to right, #432889, #17101F)'
-              : 'black',
-          backgroundSize: '100% 100%',
-          display: 'flex',
-          flexDirection: 'column',
-          flexWrap: 'nowrap',
-          height: '100%',
-          justifyContent: 'center',
-          textAlign: 'center',
-          width: '100%',
-        }}
-      >
-        <div
-          style={{
-            color: 'white',
-            fontSize: 60,
-            fontStyle: 'normal',
-            letterSpacing: '-0.025em',
-            lineHeight: 1.4,
-            marginTop: 30,
-            padding: '0 120px',
-            whiteSpace: 'pre-wrap',
-          }}
-        >
-          {status === 'response'
-            ? `Nice choice.${fruit ? ` ${fruit.toUpperCase()}!!` : ''}`
-            : 'Welcome!'}
-        </div>
+      <div style={{ color: 'white', display: 'flex', fontSize: 40 }}>
+        Click button to view on Opensea!
       </div>
     ),
     intents: [
-      <TextInput placeholder="Enter custom fruit..." />,
-      <Button value="apples">Apples</Button>,
-      <Button value="oranges">Oranges</Button>,
-      <Button value="bananas">Bananas</Button>,
-      status === 'response' && <Button.Reset>Reset</Button.Reset>,
-    ],
+      <Button.Link href="https://opensea.io/collection/onchain-blobs">Blobs Opensea</Button.Link>,
+      <Button action='/'>Start Again</Button>
+    ]
+  })
+})
+ 
+app.transaction('/mint', (c) => {
+  // Contract transaction response.
+  return c.contract({
+    abi,
+    chainId: 'eip155:8453',
+    functionName: 'mint',
+    args: [],
+    to: '0xc03665CFC813F89d1BB1A959A2819Da1A136dbF5',
+    value: BigInt(250000000000000)
   })
 })
 
