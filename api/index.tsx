@@ -42,7 +42,7 @@ app.transaction('/mint', (c) => {
     functionName: 'mint',
     args: [BigInt(1)],
     to: '0xD1fCb4BDBde69F04540d2c52a81AE33aBEA46400',
-    value: BigInt(250000000000000)
+    value: BigInt(500000000000000)
   })
 })
 
