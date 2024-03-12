@@ -1,4 +1,4 @@
-import { Button, Frog } from 'frog'
+import { Button, Frog, TextInput } from 'frog'
 import { handle } from 'frog/vercel'
 import { abi } from './abi.js'
 
@@ -12,8 +12,9 @@ app.frame('/', (c) => {
     action: '/finish',
     image: "/blobs.png",
     intents: [
-      <Button.Transaction target="/mint">Mint an Onchain Blob</Button.Transaction>,
-      <Button.Link href="https://opensea.io/collection/onchain-blobs">Blobs Opensea</Button.Link>
+      <Button.Transaction target="/mint">Mint in Frame</Button.Transaction>,
+      <Button.Link href="https://opensea.io/collection/onchain-blobs">Opensea</Button.Link>,
+      <Button.Link href="https://mint.fun/base/0xD1fCb4BDBde69F04540d2c52a81AE33aBEA46400">Mint.fun</Button.Link>
     ]
   })
 })
@@ -23,7 +24,7 @@ app.frame('/finish', (c) => {
   return c.res({
     image: (
       <div style={{ color: 'white', display: 'flex', fontSize: 40 }}>
-        Click button to view on Opensea!
+        Frame by Apex777.eth - Rawr!
       </div>
     ),
     intents: [
@@ -39,8 +40,8 @@ app.transaction('/mint', (c) => {
     abi,
     chainId: 'eip155:8453',
     functionName: 'mint',
-    args: [],
-    to: '0xc03665CFC813F89d1BB1A959A2819Da1A136dbF5',
+    args: [BigInt(1)],
+    to: '0xD1fCb4BDBde69F04540d2c52a81AE33aBEA46400',
     value: BigInt(250000000000000)
   })
 })

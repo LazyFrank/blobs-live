@@ -1,6 +1,12 @@
 export const abi = [
     {
-		inputs: [],
+		inputs: [
+			{
+				"internalType": "uint256",
+				"name": "quantity",
+				"type": "uint256"
+			}
+		],
 		name: "mint",
 		outputs: [],
 		stateMutability: "payable",
