@@ -11,7 +11,7 @@ export const app = new Frog({
 app.frame("/", (c) => {
   return c.res({
     action: "/finish",
-    image: "/birbs.png",
+    image: "/lazybirbs.gif",
     intents: [
       <Button.Transaction target="/mint">Mint</Button.Transaction>,
       <Button action="/faq">What are Lazy Birbs?</Button>,
@@ -22,7 +22,7 @@ app.frame("/", (c) => {
 
 app.frame("/links", (c) => {
   return c.res({
-    image: "/birbs.gif",
+    image: "/nameless.gif",
     intents: [
       <Button.Transaction target="/mint">Mint</Button.Transaction>,
       <Button.Link href="https://opensea.io/collection/lazybirbs">
@@ -39,6 +39,17 @@ app.frame("/faq", (c) => {
     image: "/birb-faq1.png",
     intents: [
       <Button.Transaction target="/mint">Mint</Button.Transaction>,
+      <Button action="/keepitmovin">➡️</Button>,
+      <Button action="/">🏠</Button>,
+    ],
+  })
+})
+
+app.frame("/keepitmovin", (c) => {
+  return c.res({
+    image: "/birb-walk.gif",
+    intents: [
+      <Button.Transaction target="/mint">Mint</Button.Transaction>,
       <Button action="/faq2">➡️</Button>,
       <Button action="/">🏠</Button>,
     ],
@@ -51,6 +62,17 @@ app.frame("/faq2", (c) => {
     intents: [
       <Button.Transaction target="/mint">Mint</Button.Transaction>,
       <Button action="/faq1">⬅️</Button>,
+      <Button action="/hootyhoot">➡️</Button>,
+      <Button action="/">🏠</Button>,
+    ],
+  })
+})
+
+app.frame("/hootyhoo", (c) => {
+  return c.res({
+    image: "/hooty-hoo.gif",
+    intents: [
+      <Button.Transaction target="/mint">Mint</Button.Transaction>,
       <Button action="/faq3">➡️</Button>,
       <Button action="/">🏠</Button>,
     ],
