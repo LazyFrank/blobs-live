@@ -62,7 +62,7 @@ app.frame("/faq2", (c) => {
     intents: [
       <Button.Transaction target="/mint">Mint</Button.Transaction>,
       <Button action="/faq1">⬅️</Button>,
-      <Button action="/hootyhoot">➡️</Button>,
+      <Button action="/hootyhoo">➡️</Button>,
       <Button action="/">🏠</Button>,
     ],
   })
