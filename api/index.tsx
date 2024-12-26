@@ -14,7 +14,7 @@ app.frame("/", (c) => {
     image: "/lazybirbs.gif",
     intents: [
       <Button.Transaction target="/mint">Mint</Button.Transaction>,
-      <Button action="/faq">What are Lazy Birbs?</Button>,
+      <Button action="/faq">Tell me more</Button>,
       <Button action="/links">Links</Button>,
     ],
   })
