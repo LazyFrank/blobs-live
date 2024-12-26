@@ -10,10 +10,10 @@ export const app = new Frog({
 app.frame("/", (c) => {
   return c.res({
     action: "/finish",
-    image: "/blobs.png",
+    image: "/birbs.png",
     intents: [
       <Button.Transaction target="/mint">Mint</Button.Transaction>,
-      <Button action="/faq1">What are Blobs?</Button>,
+      <Button action="/faq">What are Lazy Birbs?</Button>,
       <Button action="/links">Links</Button>,
     ],
   })
@@ -21,23 +21,21 @@ app.frame("/", (c) => {
 
 app.frame("/links", (c) => {
   return c.res({
-    image: "/blobs.png",
+    image: "/birbs.gif",
     intents: [
       <Button.Transaction target="/mint">Mint</Button.Transaction>,
-      <Button.Link href="https://opensea.io/collection/onchain-blobs">
+      <Button.Link href="https://opensea.io/collection/lazybirbs">
         Opensea
       </Button.Link>,
-      <Button.Link href="https://mint.fun/base/0xD1fCb4BDBde69F04540d2c52a81AE33aBEA46400">
-        Mint.fun
-      </Button.Link>,
+      <Button.Link href="https://birbs.lazyfrank.xyz/">Website</Button.Link>,
       <Button action="/">🏠</Button>,
     ],
   })
 })
 
-app.frame("/faq1", (c) => {
+app.frame("/faq", (c) => {
   return c.res({
-    image: "/blobs1.png",
+    image: "/birb-faq1.png",
     intents: [
       <Button.Transaction target="/mint">Mint</Button.Transaction>,
       <Button action="/faq2">➡️</Button>,
@@ -48,7 +46,7 @@ app.frame("/faq1", (c) => {
 
 app.frame("/faq2", (c) => {
   return c.res({
-    image: "/blobs2.png",
+    image: "/birb-faq2.png",
     intents: [
       <Button.Transaction target="/mint">Mint</Button.Transaction>,
       <Button action="/faq1">⬅️</Button>,
@@ -60,48 +58,47 @@ app.frame("/faq2", (c) => {
 
 app.frame("/faq3", (c) => {
   return c.res({
-    image: "/blobs3.png",
+    image: "/birb-faq3.png",
     intents: [
       <Button.Transaction target="/mint">Mint</Button.Transaction>,
       <Button action="/faq2">⬅️</Button>,
-      <Button action="/faq4">➡️</Button>,
       <Button action="/">🏠</Button>,
     ],
   })
 })
 
-app.frame("/faq4", (c) => {
-  return c.res({
-    image: "/blobs4.png",
-    intents: [
-      <Button.Transaction target="/mint">Mint</Button.Transaction>,
-      <Button action="/faq3">⬅️</Button>,
-      <Button action="/faq5">➡️</Button>,
-      <Button action="/">🏠</Button>,
-    ],
-  })
-})
+// app.frame("/faq4", (c) => {
+//   return c.res({
+//     image: "/blobs4.png",
+//     intents: [
+//       <Button.Transaction target="/mint">Mint</Button.Transaction>,
+//       <Button action="/faq3">⬅️</Button>,
+//       <Button action="/faq5">➡️</Button>,
+//       <Button action="/">🏠</Button>,
+//     ],
+//   })
+// })
 
-app.frame("/faq5", (c) => {
-  return c.res({
-    image: "/blobsend.png",
-    intents: [
-      <Button.Transaction target="/mint">Mint</Button.Transaction>,
-      <Button action="/">🏠</Button>,
-    ],
-  })
-})
+// app.frame("/faq5", (c) => {
+//   return c.res({
+//     image: "/blobsend.png",
+//     intents: [
+//       <Button.Transaction target="/mint">Mint</Button.Transaction>,
+//       <Button action="/">🏠</Button>,
+//     ],
+//   })
+// })
 
 app.frame("/finish", (c) => {
   const {} = c
   return c.res({
-    image: "/finish.png",
+    image: "/birbs.png",
     intents: [
-      <Button.Link href="https://opensea.io/collection/onchain-blobs">
-        Blobs Opensea
+      <Button.Link href="https://opensea.io/collection/lazybirbs">
+        Lazy Birbs Opensea
       </Button.Link>,
-      <Button.Link href="https://warpcast.com/apex777">
-        Apex777.eth
+      <Button.Link href="https://warpcast.com/lazyfrank">
+        LazyFrank.eth
       </Button.Link>,
       <Button action="/">🏠</Button>,
     ],
