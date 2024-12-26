@@ -3,6 +3,7 @@ import { handle } from "frog/vercel"
 import { abi } from "./abi.js"
 
 export const app = new Frog({
+  imageAspectRatio: "1:1",
   assetsPath: "/",
   basePath: "/api",
 })
