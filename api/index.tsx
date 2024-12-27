@@ -13,7 +13,7 @@ app.frame("/", (c) => {
     action: "/finish",
     image: "/lazybirbs.gif",
     intents: [
-      <Button.Transaction target="/mint">Mint</Button.Transaction>,
+      <Button action="/mint">Mint</Button>,
       <Button action="/faq">Tell me more</Button>,
       <Button action="/links">Links</Button>,
     ],
@@ -24,7 +24,7 @@ app.frame("/links", (c) => {
   return c.res({
     image: "/hooty-hoo.gif",
     intents: [
-      <Button.Transaction target="/mint">Mint</Button.Transaction>,
+      <Button action="/mintLinks">Mint</Button>,
       <Button.Link href="https://opensea.io/collection/lazybirbs">
         Opensea
       </Button.Link>,
@@ -38,7 +38,7 @@ app.frame("/faq", (c) => {
   return c.res({
     image: "/birb-faq1.png",
     intents: [
-      <Button.Transaction target="/mint">Mint</Button.Transaction>,
+      <Button action="/mintLinks">Mint</Button>,
       <Button action="/faq2">➡️</Button>,
       <Button action="/">🏠</Button>,
     ],
@@ -49,7 +49,7 @@ app.frame("/faq2", (c) => {
   return c.res({
     image: "/birb-faq2.png",
     intents: [
-      <Button.Transaction target="/mint">Mint</Button.Transaction>,
+      <Button action="/mintLinks">Mint</Button>,
       <Button action="/faq1">⬅️</Button>,
       <Button action="/faq3">➡️</Button>,
       <Button action="/">🏠</Button>,
@@ -61,14 +61,14 @@ app.frame("/faq3", (c) => {
   return c.res({
     image: "/birb-faq3.png",
     intents: [
-      <Button.Transaction target="/mint">Mint</Button.Transaction>,
+      <Button action="/mintLinks">Mint</Button>,
       <Button action="/faq2">⬅️</Button>,
       <Button action="/">🏠</Button>,
     ],
   })
 })
 
-app.frame("/mint", (c) => {
+app.frame("/mintLinks", (c) => {
   return c.res({
     image: "/birb-walk.gif",
     intents: [
