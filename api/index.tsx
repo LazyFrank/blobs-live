@@ -22,7 +22,7 @@ app.frame("/", (c) => {
 
 app.frame("/links", (c) => {
   return c.res({
-    image: "/nameless.gif",
+    image: "/hooty-hoo.gif",
     intents: [
       <Button.Transaction target="/mint">Mint</Button.Transaction>,
       <Button.Link href="https://opensea.io/collection/lazybirbs">
@@ -39,17 +39,6 @@ app.frame("/faq", (c) => {
     image: "/birb-faq1.png",
     intents: [
       <Button.Transaction target="/mint">Mint</Button.Transaction>,
-      <Button action="/keepitmovin">➡️</Button>,
-      <Button action="/">🏠</Button>,
-    ],
-  })
-})
-
-app.frame("/keepitmovin", (c) => {
-  return c.res({
-    image: "/birb-walk.gif",
-    intents: [
-      <Button.Transaction target="/mint">Mint</Button.Transaction>,
       <Button action="/faq2">➡️</Button>,
       <Button action="/">🏠</Button>,
     ],
@@ -62,17 +51,6 @@ app.frame("/faq2", (c) => {
     intents: [
       <Button.Transaction target="/mint">Mint</Button.Transaction>,
       <Button action="/faq1">⬅️</Button>,
-      <Button action="/hootyhoo">➡️</Button>,
-      <Button action="/">🏠</Button>,
-    ],
-  })
-})
-
-app.frame("/hootyhoo", (c) => {
-  return c.res({
-    image: "/hooty-hoo.gif",
-    intents: [
-      <Button.Transaction target="/mint">Mint</Button.Transaction>,
       <Button action="/faq3">➡️</Button>,
       <Button action="/">🏠</Button>,
     ],
@@ -90,32 +68,23 @@ app.frame("/faq3", (c) => {
   })
 })
 
-// app.frame("/faq4", (c) => {
-//   return c.res({
-//     image: "/blobs4.png",
-//     intents: [
-//       <Button.Transaction target="/mint">Mint</Button.Transaction>,
-//       <Button action="/faq3">⬅️</Button>,
-//       <Button action="/faq5">➡️</Button>,
-//       <Button action="/">🏠</Button>,
-//     ],
-//   })
-// })
-
-// app.frame("/faq5", (c) => {
-//   return c.res({
-//     image: "/blobsend.png",
-//     intents: [
-//       <Button.Transaction target="/mint">Mint</Button.Transaction>,
-//       <Button action="/">🏠</Button>,
-//     ],
-//   })
-// })
+app.frame("/mint", (c) => {
+  return c.res({
+    image: "/birb-walk.gif",
+    intents: [
+      <Button.Transaction target="/mint?amount=1">Mint</Button.Transaction>,
+      <Button.Transaction target="/mint?amount=5">Mint 5</Button.Transaction>,
+      <Button.Transaction target="/mint?amount=10">Mint 10</Button.Transaction>,
+      <Button.Transaction target="/mint?amount=20">Mint 20</Button.Transaction>,
+      <Button action="/">🏠</Button>,
+    ],
+  })
+})
 
 app.frame("/finish", (c) => {
   const {} = c
   return c.res({
-    image: "/birbs.png",
+    image: "/hooty-hoo.gif",
     intents: [
       <Button.Link href="https://opensea.io/collection/lazybirbs">
         Lazy Birbs Opensea
@@ -129,13 +98,14 @@ app.frame("/finish", (c) => {
 })
 
 app.transaction("/mint", (c) => {
-  // Contract transaction response.
+  const amount = c.req.query("amount") ? Number(c.req.query("amount")) : 1
+
   return c.contract({
     abi,
-    chainId: "eip155:8453",
-    functionName: "mint",
-    args: [BigInt(1)],
-    to: "0xD1fCb4BDBde69F04540d2c52a81AE33aBEA46400",
+    chainId: "eip155:84532" as any, // Mainnet: "eip155:8453",
+    functionName: "devMint",
+    args: [BigInt(amount)],
+    to: "0xe65bb470d6a59c895fdc878d3f796818ab1ccb06",
     value: BigInt(500000000000000),
   })
 })
