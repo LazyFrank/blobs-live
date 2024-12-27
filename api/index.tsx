@@ -13,7 +13,7 @@ app.frame("/", (c) => {
     action: "/finish",
     image: "/lazybirbs.gif",
     intents: [
-      <Button action="/mint">Mint</Button>,
+      <Button action="/mintLinks">Mint</Button>,
       <Button action="/faq">Tell me more</Button>,
       <Button action="/links">Links</Button>,
     ],
@@ -105,7 +105,7 @@ app.transaction("/mint", (c) => {
     functionName: "mint",
     args: [BigInt(amount)],
     to: "0xE65bb470D6a59c895FDC878d3F796818AB1cCB06",
-    value: BigInt(2000000000000000),
+    value: BigInt(amount * 2000000000000000),
   })
 })
 
