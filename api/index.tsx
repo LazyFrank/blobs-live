@@ -75,7 +75,7 @@ app.frame("/mintLinks", (c) => {
       <Button.Transaction target="/mint?amount=1">Mint</Button.Transaction>,
       <Button.Transaction target="/mint?amount=5">Mint 5</Button.Transaction>,
       <Button.Transaction target="/mint?amount=10">Mint 10</Button.Transaction>,
-      <Button.Transaction target="/mint?amount=20">Mint 20</Button.Transaction>,
+      <Button.Transaction target="/mint">Mint</Button.Transaction>,
       <Button action="/">🏠</Button>,
     ],
   })
@@ -103,7 +103,7 @@ app.transaction("/mint", (c) => {
   return c.contract({
     abi,
     chainId: "eip155:84532" as any, // Mainnet: "eip155:8453",
-    functionName: "devMint",
+    functionName: "mint",
     args: [BigInt(amount)],
     to: "0xe65bb470d6a59c895fdc878d3f796818ab1ccb06",
     value: BigInt(500000000000000),
