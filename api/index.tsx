@@ -105,8 +105,8 @@ app.transaction("/mint", (c) => {
     chainId: "eip155:84532" as any, // Mainnet: "eip155:8453",
     functionName: "mint",
     args: [BigInt(amount)],
-    to: "0xe65bb470d6a59c895fdc878d3f796818ab1ccb06",
-    value: BigInt(500000000000000),
+    to: "0xE65bb470D6a59c895FDC878d3F796818AB1cCB06",
+    value: BigInt(2000000000000000),
   })
 })
 
