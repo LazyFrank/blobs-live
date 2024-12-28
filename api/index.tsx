@@ -99,7 +99,7 @@ app.transaction("/mint", (c) => {
 
   return c.contract({
     abi,
-    chainId: "eip155:8453",
+    chainId: "eip155:84532" as any, // Mainnet: "eip155:8453",
     functionName: "mint",
     args: [BigInt(amount)],
     to: "0xE65bb470D6a59c895FDC878d3F796818AB1cCB06",
