@@ -76,7 +76,7 @@ app.frame("/mintLinks", (c) => {
       <Button.Transaction target="/mint?amount=1">Mint</Button.Transaction>,
       <Button.Transaction target="/mint?amount=5">Mint 5</Button.Transaction>,
       <Button.Transaction target="/mint?amount=10">Mint 10</Button.Transaction>,
-      <Button.Link href="https://birbs.lazyfrank.xyz/">Mint More</Button.Link>,
+      <Button.Link href="https://birbs.lazyfrank.xyz/">More</Button.Link>,
     ],
   })
 })
