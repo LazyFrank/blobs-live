@@ -24,7 +24,7 @@ app.frame("/links", (c) => {
     image: "/hooty-hoo.gif",
     intents: [
       <Button action="/mintLinks">Mint</Button>,
-      <Button.Link href="https://opensea.io/collection/lazybirbs">
+      <Button.Link href="https://opensea.io/collection/lazy-birbs">
         Opensea
       </Button.Link>,
       <Button.Link href="https://birbs.lazyfrank.xyz/">Website</Button.Link>,
@@ -99,10 +99,10 @@ app.transaction("/mint", (c) => {
 
   return c.contract({
     abi,
-    chainId: "eip155:84532" as any, // Mainnet: "eip155:8453",
+    chainId: "eip155:8453",
     functionName: "mint",
     args: [BigInt(amount)],
-    to: "0x4E5094BCA4159b1F25D149Fe006a005F6a609Bf4",
+    to: "0xc11f09103c575a4e898eb9a1c7bb4486b06546ce",
     value: BigInt(amount * 2000000000000000),
   })
 })
