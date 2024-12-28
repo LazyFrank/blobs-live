@@ -70,26 +70,29 @@ app.frame("/faq3", (c) => {
 
 app.frame("/mintLinks", (c) => {
   return c.res({
+    action: "/finish",
     image: "/birb-walk.gif",
     intents: [
       <Button.Transaction target="/mint?amount=1">Mint</Button.Transaction>,
       <Button.Transaction target="/mint?amount=5">Mint 5</Button.Transaction>,
       <Button.Transaction target="/mint?amount=10">Mint 10</Button.Transaction>,
+      <Button.Transaction target="/mint?amount=20">Mint 20</Button.Transaction>,
+      <Button.Transaction target="/mint?amount=50">
+        Max Mint 50
+      </Button.Transaction>,
       <Button action="/">🏠</Button>,
     ],
   })
 })
 
 app.frame("/finish", (c) => {
-  const {} = c
+  if (!c.transactionId) return c.res({ image: "/error.gif" })
+
   return c.res({
-    image: "/hooty-hoo.gif",
+    image: "/congrats.png",
     intents: [
-      <Button.Link href="https://opensea.io/collection/lazybirbs">
+      <Button.Link href="https://opensea.io/collection/lazy-birbs">
         Lazy Birbs Opensea
-      </Button.Link>,
-      <Button.Link href="https://warpcast.com/lazyfrank">
-        LazyFrank.eth
       </Button.Link>,
       <Button action="/">🏠</Button>,
     ],
@@ -101,7 +104,7 @@ app.transaction("/mint", (c) => {
 
   return c.contract({
     abi,
-    chainId: "eip155:84532" as any, // Mainnet: "eip155:8453",
+    chainId: "eip155:8453",
     functionName: "mint",
     args: [BigInt(amount)],
     to: "0xE65bb470D6a59c895FDC878d3F796818AB1cCB06",
