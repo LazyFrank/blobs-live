@@ -70,7 +70,6 @@ app.frame("/faq3", (c) => {
 
 app.frame("/mintLinks", (c) => {
   return c.res({
-    action: "/finish",
     image: "/birb-walk.gif",
     intents: [
       <Button.Transaction target="/mint?amount=1">Mint</Button.Transaction>,
