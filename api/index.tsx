@@ -81,7 +81,7 @@ app.frame("/mintLinks", (c) => {
 })
 
 app.frame("/finish", (c) => {
-  if (!c.transactionId) return c.res({ image: "/error.gif" })
+  if (!c.transactionId) return c.res({ image: "/icon.png" })
 
   return c.res({
     image: "/congrats.png",
